@@ -5,13 +5,13 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.Date;
 @Entity
-@Table(name="transition")
+@Table(name="transaction")
 @Data
-public class Transition {
+public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long transitionId;
+    private Long transactionId;
 
     @ManyToOne
     @JoinColumn(name= "item_id")
