@@ -15,6 +15,11 @@ public class PersonService {
     public List<Person> findAll(){
         List<Person> listPerson = personRepository.findAll();
         return listPerson;
+
+    }
+    public Person findById(Long personId ){
+        Person person = personRepository.findById(personId).orElse(null);
+        return person;
     }
 
 }

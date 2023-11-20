@@ -16,4 +16,12 @@ public class WalletService {
         List<Wallet> listWallet = walletRepository.findAll();
         return listWallet;
     }
+
+    public Wallet findById(Long walletId){
+
+        Wallet wallet = walletRepository.findById(walletId).orElse(null);
+
+        return wallet;
+    }
+
 }

@@ -22,4 +22,8 @@ public class ItemService {
         List<Item> listItem = itemRepository.findAll();
         return listItem;
     }
+    public Item findById(Long itemId){
+        Item item= itemRepository.findById(itemId).orElse(null);
+        return item;
+    }
 }
