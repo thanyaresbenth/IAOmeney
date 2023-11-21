@@ -35,4 +35,18 @@ public class ItemService {
         itemRepository.save(item);
         return item;
     }
+    public  Item updateItem(ItemRequest itemRequest){
+        Long itemId = itemRequest.getItemId();
+        Item item = itemRepository.findById(itemId).orElse(null);
+        item.setItemName(itemRequest.getItemName());
+        item.setItemType(itemRequest.getItemType());
+        item.setAmount(itemRequest.getAmount());
+        itemRepository.save(item);
+        return item;
+    }
+    public  void deleteItemById( Long itemId){
+        itemRepository.deleteById(itemId);
+
+    }
+
 }

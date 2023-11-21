@@ -7,4 +7,5 @@ public class ItemRequest {
     private String itemName;
     private String itemType;
     private Double amount;
+    private Long itemId;
 }

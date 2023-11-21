@@ -37,5 +37,15 @@ public class PersonController {
         personService.createPerson(personRequest);
         return "person";
     }
+    @PostMapping("/update-person")
+    public String updatePerson(@RequestBody PersonRequest personRequest){
+        personService.updatePerson(personRequest);
+        return "person";
+    }
+    @PostMapping("/delete-person")
+    public String deletePersonById(@RequestBody PersonRequest personRequest){
+       personService.deletePersonById(personRequest.getPersonId());
+        return "person";
+    }
 
 }

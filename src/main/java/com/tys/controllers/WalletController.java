@@ -40,5 +40,16 @@ public class WalletController {
         walletService.createWallet(walletRequest);
         return "wallet";
     }
+    @PostMapping("/update-wallet")
+    public String updateWallet(@RequestBody WalletRequest walletRequest){
+        walletService.updateWallet(walletRequest);
+        return "wallet";
+    }
+    @PostMapping("/delete-wallet")
+    public String deleteWallet(@RequestBody WalletRequest walletRequest){
+        walletService.deleteWallet(walletRequest.getWalletId());
+        return "wallet";
+    }
+
 
 }

@@ -39,5 +39,16 @@ public class ItemController {
         itemService.createItem(itemRequest);
         return "item";
     }
+    @PostMapping("/update-item")
+    public String updateItem(@RequestBody ItemRequest itemRequest) {
+        itemService.updateItem(itemRequest);
+        return "item";
 
+    }
+    @PostMapping("/delete-item")
+    public String deleteItemId(@RequestBody ItemRequest itemRequest){
+        itemService.deleteItemById(itemRequest.getItemId());
+
+        return "item";
+    }
 }

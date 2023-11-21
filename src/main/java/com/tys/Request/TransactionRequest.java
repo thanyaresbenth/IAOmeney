@@ -9,4 +9,5 @@ public class TransactionRequest {
     private Date date;
     private Long itemId;
     private Long walletId;
+    private Long transactionId;
 }

@@ -6,4 +6,5 @@ import lombok.Data;
 public class WalletRequest {
     private Double balance;
     private Long personId;
+    private Long walletId;
 }

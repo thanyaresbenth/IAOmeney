@@ -29,11 +29,12 @@ public class WalletService {
 
         return wallet;
     }
+
     public Wallet createWallet(WalletRequest walletRequest){
         Wallet wallet = new Wallet();
         Long personId = walletRequest.getPersonId();
-        System.out.println(personId);
-        System.out.println(walletRequest.getBalance());
+    //    System.out.println(personId);
+    //    System.out.println(walletRequest.getBalance());
 
         Person person  =personRepository.findById(personId).orElse(null);
         wallet.setBalance(walletRequest.getBalance());
@@ -41,9 +42,20 @@ public class WalletService {
         walletRepository.save(wallet);
         return wallet;
 
-
-
-
+    }
+    public Wallet updateWallet(WalletRequest walletRequest){
+        Long walletId = walletRequest.getWalletId();
+        Wallet wallet = walletRepository.findById(walletId).orElse(null);
+        Long personId = walletRequest.getPersonId();
+        Person person = personRepository.findById(personId).orElse(null);
+        wallet.setBalance(walletRequest.getBalance());
+        wallet.setPerson(person);
+        walletRepository.save(wallet);
+        return wallet;
+    }
+    public void deleteWallet(Long walletId){
+        Wallet wallet = walletRepository.findById(walletId).orElse(null);
+        walletRepository.delete(wallet);
     }
 
 }

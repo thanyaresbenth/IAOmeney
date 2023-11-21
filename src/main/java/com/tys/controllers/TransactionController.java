@@ -36,5 +36,15 @@ public class TransactionController {
       transactionService.createTransaction(transactionRequest);
       return "transaction";
    }
+   @PostMapping("/update-transaction")
+   public String updateTransaction(@RequestBody TransactionRequest transactionRequest){
+      transactionService.updateTransaction(transactionRequest);
+      return "transaction";
+   }
+   @PostMapping("/delete-transaction")
+   public String deleteTransactionById(@RequestBody TransactionRequest transactionRequest){
+      transactionService.deleteTransactionById(transactionRequest.getTransactionId());
+      return "transaction";
+   }
 
 }

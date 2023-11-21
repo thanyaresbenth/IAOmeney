@@ -30,5 +30,15 @@ public class PersonService {
         return person;
 
     }
+    public Person updatePerson(PersonRequest personRequest){
+        Long personId = personRequest.getPersonId();
+        Person person = personRepository.findById(personId).orElse(null);
+        person.setUuid(personRequest.getUuid());
+        personRepository.save(person);
+        return person;
+    }
+    public  void deletePersonById(Long personId){
+        personRepository.deleteById(personId);
+    }
 
 }

@@ -39,12 +39,6 @@ public class TransactionService {
         Transaction transaction = new Transaction();
         Long itemId = transactionRequest.getItemId();
         Long walletId = transactionRequest.getWalletId();
-
-        System.out.println(walletId);
-        System.out.println(itemId);
-        System.out.println(transactionRequest.getBalance());
-
-
         Wallet wallet = walletRepository.findById(walletId).orElse(null);
         Item item = itemRepository.findById(itemId).orElse(null);
         transaction.setItem(item);
@@ -55,4 +49,25 @@ public class TransactionService {
         return transaction;
 
     }
+    public Transaction updateTransaction(TransactionRequest transactionRequest){
+        Long transactionId = transactionRequest.getTransactionId();
+        Transaction transaction =transactionRepository.findById(transactionId).orElse(null);
+        Long itemId = transactionRequest.getItemId();
+        Long walletId = transactionRequest.getWalletId();
+        Wallet wallet = walletRepository.findById(walletId).orElse(null);
+        Item item = itemRepository.findById(itemId).orElse(null);
+        transaction.setItem(item);
+        transaction.setWallet(wallet);
+        transaction.setDate(transactionRequest.getDate());
+        transaction.setBalance(transactionRequest.getBalance());
+        transactionRepository.save(transaction);
+        return transaction;
+    }
+    public void deleteTransactionById(Long transactionId){
+
+        transactionRepository.deleteById(transactionId);
+
+
+    }
+
 }
