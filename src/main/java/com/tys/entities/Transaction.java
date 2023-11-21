@@ -17,6 +17,10 @@ public class Transaction {
     @JoinColumn(name= "item_id")
     private Item item;
 
+    @ManyToOne
+    @JoinColumn(name= "wallet_id")
+    private Wallet wallet;
+
     @Column
     private Double balance;
 

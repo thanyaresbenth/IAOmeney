@@ -1,18 +1,23 @@
 package com.tys.controllers;
 
+import com.tys.Request.TransactionRequest;
 import com.tys.entities.Transaction;
+import com.tys.service.ItemService;
 import com.tys.service.TransactionService;
+import com.tys.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/transaction")
 public class TransactionController {
+   @Autowired
+   private WalletService walletService;
+   @Autowired
+   private ItemService itemService;
+
    @Autowired
    private TransactionService transactionService;
 
@@ -25,6 +30,11 @@ public class TransactionController {
    public Transaction getById(@RequestParam Long transactionId){
       Transaction transaction = transactionService.findById(transactionId);
       return transaction;
+   }
+   @PostMapping("/create-transaction")
+   public String createTransaction(@RequestBody TransactionRequest transactionRequest){
+      transactionService.createTransaction(transactionRequest);
+      return "transaction";
    }
 
 }
