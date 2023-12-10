@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Scanner;
-
+@CrossOrigin(origins ="*")
 @RestController
 @RequestMapping("/wallet")
 public class WalletController {
@@ -37,8 +37,10 @@ public class WalletController {
 
     @PostMapping("/create-wallet")
     public String createWallet(@RequestBody WalletRequest walletRequest){
-        walletService.createWallet(walletRequest);
-        return "wallet";
+        System.out.println("create-wallet");
+        Wallet wallet = walletService.createWallet(walletRequest);
+        String walletId =wallet.getWalletId().toString();
+        return walletId;
     }
     @PostMapping("/update-wallet")
     public String updateWallet(@RequestBody WalletRequest walletRequest){
