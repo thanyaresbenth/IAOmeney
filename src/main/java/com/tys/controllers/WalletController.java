@@ -40,6 +40,7 @@ public class WalletController {
         System.out.println("create-wallet");
         Wallet wallet = walletService.createWallet(walletRequest);
         String walletId =wallet.getWalletId().toString();
+        System.out.println(walletId);
         return walletId;
     }
     @PostMapping("/update-wallet")

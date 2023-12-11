@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins ="*")
 @RestController
 @RequestMapping("/item")
 public class ItemController {
@@ -36,8 +36,9 @@ public class ItemController {
     }
     @PostMapping("/createItem")
     public String createItem(@RequestBody ItemRequest itemRequest){
-        itemService.createItem(itemRequest);
-        return "item";
+       Item item = itemService.createItem(itemRequest);
+        System.out.println(item);
+        return item.getItemId().toString();
     }
     @PostMapping("/update-item")
     public String updateItem(@RequestBody ItemRequest itemRequest) {
